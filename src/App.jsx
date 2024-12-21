@@ -13,7 +13,7 @@ const App = () => {
   const [loader, setLoader] = useState(false);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const [photoView, setPhotoView] = useState()
+  const [photoView, setPhotoView] = useState();
 
   useEffect(() => {
     const fetchPhotos = async () => {
@@ -41,15 +41,22 @@ const App = () => {
     }
   }, [search, page]);
 
-
   return (
     <>
-      <ErrorMessage />
+      {error && <ErrorMessage />}
+
       <Navbar setSearch={setSearch} />
       {loader && <Loader />}
-      <ImageGallery photos={photos} setPhotoView={setPhotoView}/>
-      {(photos.length > 0 && page < totalPages) && <LoadMoreBtn page={page} setPage={setPage} />}
-      {photoView && <ImageModal img={photos.find(photo => photo.id === photoView)} setPhotoView={setPhotoView} />}
+      <ImageGallery photos={photos} setPhotoView={setPhotoView} />
+      {photos.length > 0 && page < totalPages && (
+        <LoadMoreBtn page={page} setPage={setPage} />
+      )}
+      {photoView && (
+        <ImageModal
+          img={photos.find((photo) => photo.id === photoView)}
+          setPhotoView={setPhotoView}
+        />
+      )}
     </>
   );
 };
