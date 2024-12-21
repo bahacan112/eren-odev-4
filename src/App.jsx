@@ -43,8 +43,7 @@ const App = () => {
 
   return (
     <>
-      {error && <ErrorMessage />}
-
+      <ErrorMessage />
       <Navbar setSearch={setSearch} />
       {loader && <Loader />}
       <ImageGallery photos={photos} setPhotoView={setPhotoView} />
