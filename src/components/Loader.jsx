@@ -1,7 +1,11 @@
 import { TailSpin } from "react-loader-spinner";
 
-const Loader = () => {
-  return <TailSpin height="80" width="80" color="#e15b64" />;
-};
+function Loader() {
+  return (
+    <div>
+      <TailSpin height="80" width="80" color="#4fa94d" />
+    </div>
+  );
+}
 
 export default Loader;
